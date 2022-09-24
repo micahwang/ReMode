@@ -1,0 +1,231 @@
+
+<html>
+
+ <head>
+	<meta charset="utf-8"> 
+	<title>ReMODE</title>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-select.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/relation.css' %}">
+	<script type="text/javascript" src="{% static 'js/subjob_1.js' %}" ></script>	
+	<script type="text/javascript" language="javascript" src="{% static 'js/jsme/jsme.nocache.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'uis/jquery-ui-1.11.4.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrapSwitch.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrapSwitch.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/fa/css/font-awesome.min.css' %}">
+  <script type="text/javascript" language="javascript" src="{% static 'js/ec/echarts.min.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/help.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    
+    
+</head>
+  
+<body id="idx-top" data-new-gr-c-s-check-loaded="14.1078.0" data-gr-ext-installed="">
+	<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark" style="background-color: #333537;">
+		<div class="container">
+			<a class="navbar-brand navbar-dark" href="/relation/remode/">
+        <img src="{% static 'img/logo.png' %}" width="30" height="30">
+        <a href="/relation/remode/" class="navbar-brand" >ReMODE</a>
+      </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCol" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navCol">
+				<ul class="navbar-nav">
+					<li class="nav-item  active "><a href="/relation/remode/" class="nav-link" target="_blank">HOME</a></li>
+					<li class="nav-item"><a href="/relation/remode/subjob" class="nav-link" target="_blank">SUBMIT</a></li>
+					<li class="nav-item"><a href="/relation/remode/check" class="nav-link" target="_blank">CHECK</a></li>
+					<li class="nav-item"><a href="/relation/remode/result0" class="nav-link" target="_blank">RESULT</a></li>
+					<li class="nav-item"><a href="/relation/remode/help" class="nav-link" target="_blank">HELP</a></li>
+					<li class="nav-item"><a href="/relation/remode/doc" class="nav-link" target="_blank">DOC</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+      <p> Welcome to ReMODE </p>
+      <section id="sec-intro" style="padding: 0.1em 0 0.1em 0;">
+        <div class="container">
+          <div class="col-sm-12">
+            <h2 class="section-heading"><b><i class="fa fa-commenting"></i> What is ReMODE</b></h2>
+            <hr>
+          </div>
+          <div class="col-md-12 desc">
+            <p><span id="rdt" >ReMODE</span> (<b>Re</b>ceptor-based <b>MO</b>lecular <b>DE</b>sign) server 
+              is a freely accessed web-server for <i>de novo</i> drug design. In ReMODE server, the BiTL (bidirectional transfer learning) 
+              algorithm was 
+              specifically designed to extract and transfer the desired geometric features of the protein-ligand complexes 
+              to a latent space for generation. The pharmacophore conditioning and docking-based Bayesian sampling were applied to 
+              efficiently explore the vast chemical space for the design of molecules with desired geometric properties or pharmacophores.
+              Based on these frameworks, users can select 
+              a target in the list to create the generative task and generate molecules rapidly, and the conditional models allows users to 
+              create the multi-property constraints task and fragment-based design task. Other key modules of ReMODE are the 
+              pharmacophore constraints and docking conformation optimization, users using these two modules will get molecules with 
+              favorable pharmacophore matching coefficients and docking conformations, 
+              and these molecules will have greater potential as drug candidates.
+             </p> 
+            <img class="img-fluid" src="{% static 'img/intro_1.png' %}"/>
+            &nbsp;
+
+
+
+          </div>
+        </div>
+      </section>
+      <section id="database">
+        <div class="container">
+          <div class="col-sm-12"><div class="row align-items-center">
+            <div class="col-sm-10">
+              <h2 class="section-heading"><b><i class="fa fa-server"></i> Details for User </b></h2>
+            </div>
+            <div class="col-sm-2" style="font-size:3rem;text-align:right;"><a style="color:#555;" href="/relation/remode/subjob/"><i class="fa fa-arrow-circle-right"></i></a></div>
+          </div><hr></div>
+          <div class="col-md-12 desc">
+            <p><span id="rdt">ReMODE</span> server has the following main functions:<br>
+            </br>
+            <b>Target-specified generation</b>: Users can select a protein target in our list for <i>de novo</i> design inhibitors.  All the protein targets in list have a pretrained generative model. If the switch 'Optimization' is off, users can select a target from the list, then enter the task name, email address, and the number of molecules to be generated quickly to quickly generate the target-focused molecules.<br>
+            </br>
+
+            <b>Multi-property constraint design</b>: Users can generate a number of molecules with the specific values of <span class="tooltip-test" data-toggle="tooltip" title="Molecular Weight ">MW</span> and <span class="tooltip-test" data-toggle="tooltip" title="Oil-water Partition Coefficient ">LogP</span> within given 
+            ranges, and with the optimized values of <span class="tooltip-test" data-toggle="tooltip" 
+            title="Quantitative Estimate of Drug-likeness">QED</span> and <span class="tooltip-test" data-toggle="tooltip" title="Synthetics Accessibility"> SA </span> in 'Physicochemical properties' modules.
+             It was also possible to adjust a single target property without changing the others. <br>
+              </br>
+            <b>Fragment-based generation</b>: Users can perform fragment-based design by uploading a pre-defined scaffold/fragment/structure in 'Structure features' modules. 
+            The uploaded SMILES string is used as an anchor in the latent space to find the molecules with high structural similarity to the uploaded structure.<br>
+            </br>
+            <b>Docking-based generation</b>: Users can generate molecules with fovorable docking conformation by using bayesian optimization. The 'Bayesian Optimization' module 
+            allows users to generate the target-focused molecules with high docking scores and favorable docking conformations under a specified Autodock Vina docking function.<br>
+            </br>
+            <b>Pharmacophore-based generation</b>: Users can generate molecules according to the 3D pharmacophore models. The pharmacophore properties in CVAE was set to Relative 
+            Pharmacophore-Fit to a pharmacophore model. <br>
+            </br>
+            </p>
+
+            <img class="img-fluid" src="{% static 'img/toc.png' %}"/>
+
+            <script>
+              $(function () { $("[data-toggle='tooltip']").tooltip(); });
+            </script>
+            
+          </div>
+        </div>
+      </section>
+      <section id="profkin">
+        <div class="container">
+          <div class="col-sm-12"><div class="row align-items-center">
+            <div class="col-sm-10">
+              <h2 class="section-heading"><b><i class="fa fa-pie-chart"></i> Protein kinases Profiling</b></h2>
+            </div>
+            <div class="col-sm-2" style="font-size:3rem;text-align:right;"><a style="color:#555;" href="/relation/remode/doc/"><i class="fa fa-arrow-circle-right"></i></a></div>
+            
+          </div><hr></div>
+          <div class="col-md-12 desc">
+            <p><span id="rdt">ReMODE</span> server has trained the generative model of 23 common Protein kinases, which are mainly divided into seven classfications: 
+              <b class="tooltip-test" data-toggle="tooltip" title="Tyrosine Kinase">TK</b>, 
+              <b class="tooltip-test" data-toggle="tooltip" title="Tyrosine Kinase-Like">TKL</b>, 
+              <b class="tooltip-test" data-toggle="tooltip" title="Homologs of the yeast STE7, STE11 and STE20 genes, which form the MAPK cascade">STE</b>, 
+              <b class="tooltip-test" data-toggle="tooltip" title="Named after a set of families: CDK, MAPK, GSK3 and CLK">CMGC</b>, 
+              <b class="tooltip-test" data-toggle="tooltip" title="Calmodulin/Calcium regulated kinases regulated kinases">CAMK</b>, 
+              <b class="tooltip-test" data-toggle="tooltip" title="Diverse group of kinases and candidate kinases with no structural similarity to ePKs">ATYPICAL</b>, 
+              <b class="tooltip-test" data-toggle="tooltip" title="Named after the Protein Kinase A, G, and C families (PKA, PKC, PKG)">AGC</b>.  
+              </p>
+          </div>
+        </div>
+      </section>
+
+
+      <script>setLink("n1");$("#n5").attr("href","#about");</script>
+ 
+
+
+
+<footer class="site-footer">
+  <div class="container" id="footer-container">
+      <div class="row">
+          <div class="col-sm-12 col-md-6 d-flex flex-column">
+              <h6>About</h6>
+              <p class="text-justify">
+                ReMODE is a new web server based on DL algorithm for target-specific ligand design, 
+                which integrates different functional modules to enable users to develop customizable drug design tasks. 
+                  <br>
+                  The server is described in detail here: <span style="color: #D8DBE2;">ReMODE: a deep learning-based web server for target-specific drug design.</span>
+                  <a href="" style="color: #D8DBE2;"></a>
+              </p>
+          </div>
+
+          <div class="col-xs-6 col-md-3 d-flex flex-column">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+                
+                <li><a href="mailto:liguobo@scu.edu.cn">Contact Us</a></li>
+                <li><a href="http://cadd.zju.edu.cn/" target="_blank">Tingjun Hou's Group </a></li>
+            </ul>
+            
+          <script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5pbsm54xqiy&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+        </br>
+      </br>
+        </div>
+          <div class="col-xs-6 col-md-3 d-flex flex-column">
+              <h6>Dev Tool</h6>
+              <table class="xtable xnobor-all">
+                  <tbody><tr>
+                      <td>
+                          <a href="https://www.python.org/" target="_blank">
+                              <img src="{% static 'img/python.png' %}" alt="">
+                          </a>
+                      </td>
+                      <td>
+                          <a href="https://www.rdkit.org/" target="_blank">
+                              <img src="{% static 'img/rdkit.png' %}"alt="">
+                          </a>
+                      </td>
+                      <td>
+                          <a href="https://www.djangoproject.com/" target="_blank">
+                              <img src="{% static 'img/django.png' %}" alt="">
+                          </a>
+                      </td>
+                      <td>
+                          <a href="https://pytorch.org/" target="_blank">
+                              <img src="{% static 'img/pytorch.png' %}" alt="">
+                          </a>
+                      </td>
+                  </tr>
+              </tbody></table>
+              <div class="mt-auto text-right">
+                  <p class="copyright-text">E-mail: <font color="white">tingjunhou@zju.edu.cn</font></p>
+                  <p class="copyright-text">Phone: <font color="white">+86-571-88208412</font></p>   
+              </div>
+          </div>
+      </div>
+         
+  </div>
+  <div class="container" id="footer-container">
+      <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="text-right">
+                  <p class="copyright-text">Copyright © 2022 All Rights Reserved by
+                      <a href="http://cadd.zju.edu.cn/" style="color: #ffffff;">ZJU</a> and <a href="http://www.lilab-ecust.cn" style="color: #ffffff;">ECUST</a>
+                  </p>
+
+                 
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+
+</body>
+</html>

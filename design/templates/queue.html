@@ -1,0 +1,170 @@
+
+
+<html>
+
+    <head>
+      <meta charset="utf-8"> 
+      <title>RELATION</title>
+        <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% load static %}
+      <script type="text/javascript" src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+      <script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-select.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/relation.css' %}">
+      <script type="text/javascript" src="{% static 'js/subjob_1.js' %}" ></script>	
+      <script type="text/javascript" language="javascript" src="{% static 'js/jsme/jsme.nocache.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'uis/jquery-ui-1.11.4.css' %}">
+      <script type="text/javascript" src="{% static 'js/bootstrapSwitch.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrapSwitch.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/fa/css/font-awesome.min.css' %}">
+      <script type="text/javascript" language="javascript" src="{% static 'js/ec/echarts.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/help.css' %}">
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-table.min.css' %}">
+      <script type="text/javascript" src="{% static 'js/bootstrap-table.min.js' %}"></script>
+       
+       
+   </head>
+   
+   <body>
+       
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="text-align: center;" >
+      <a class="navbar-brand" href="/relation/" >
+      <img  src="{% static 'img/logo.png' %}" alt="logo" style="width:60px;">
+    
+    </a>
+    <a href="/relation/" class="navbar-brand" >RELATION</a>
+  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ns" aria-controls="ns" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <ul class="navbar-nav" >
+        <li class="nav-item">
+        <a class="nav-link" href="/relation/" >Home</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" href="/relation/subjob" >Submit Job</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/relation/check">Check Job</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/relation/result0">View Result</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/relation/help" >Help</a>
+        </li>
+     <li class="nav-item">
+        <a class="nav-link" href="/relation/doc">Doc</a>
+        </li>
+      
+    </ul>
+  </nav>
+
+
+	<div class="input-group container" style="margin:0px 300px"  >
+			<label class="cig" style="margin:6px 10px 15px 10px">SMILES:</label>
+			<input type="text" style="height:40px" maxlength="110" class="col-md-3 adi" id="i8">
+			<span class="input-group-btn">
+			<button class="btn btn-primary"  data-toggle="modal" data-target="#Draw" type="button">Draw</button>
+			</span>
+		</div>
+		<div class="modal fade " id="Draw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">DRAW STRUCTURE</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+				</div>
+				<div class="modal-body">
+					<div code="JME.class" name="JME" archive="JME.jar" width="400" height="400" id="JME">
+						You have to enable JavaScript in your browser to use JSME! </div>
+					<form method="POST" name="getsmi" onsubmit="return false;">
+						<div class="row container">
+						<input type="text" class="form-control col-md-6" name="smi" id="dsmi" value="" readonly="" size="100" >
+						<input type="button" class="form-control col-md-3" value="Get SMILES" onClick="getSmiles()">
+						<input type="button" class="form-control col-md-3" value="Copy SMILES" id="cpsmi" onClick="cps()">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+	
+	
+	
+				</div>
+				
+					<script>
+			function getSmiles() {
+	var drawing = document.JME.smiles();
+	document.getsmi.smi.value = drawing;
+}
+	function cps(){
+	var e = document.getElementById("dsmi");
+	e.select();
+	document.execCommand("Copy");
+}
+		</script>
+			</div>
+		</div>
+
+	</div>	
+	<table class="table">
+  <caption></caption>
+  <thead>
+    <tr>
+	 <th>Job Name</th>
+      <th>Job ID</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for data in queuers %}
+    <tr>
+	<td>{{data.name}} </td>
+      <td>{{data.ID}} </td>
+      <td>{{data.State}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+	
+	
+	
+	
+
+	
+	
+	
+	
+</table>
+
+
+
+
+
+
+ 
+
+
+
+
+
+   <div class="foot">
+    <strong>Copyright &copy; 2022, <a href="http://cadd.zju.edu.cn/" target="_blank">ZJU</a> and <a href="http://www.lilab-ecust.cn" target="_blank" >ECUST</a>, all rights reserved.</strong>
+   </div> 
+   
+   
+
+
+
+   
+   </body>
+   </html>

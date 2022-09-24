@@ -1,0 +1,235 @@
+
+
+<html>
+
+    <head>
+      <meta charset="utf-8"> 
+      <title>ReMODE</title>
+        <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% load static %}
+      <script type="text/javascript" src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+      <script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-select.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/relation.css' %}">
+      <script type="text/javascript" src="{% static 'js/subjob_1.js' %}" ></script>	
+      <script type="text/javascript" language="javascript" src="{% static 'js/jsme/jsme.nocache.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'uis/jquery-ui-1.11.4.css' %}">
+      <script type="text/javascript" src="{% static 'js/bootstrapSwitch.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrapSwitch.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/fa/css/font-awesome.min.css' %}">
+      <script type="text/javascript" language="javascript" src="{% static 'js/ec/echarts.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/help.css' %}">
+       
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+       
+   </head>
+   
+   <body>
+       
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark" style="background-color: #333537;">
+      <div class="container">
+        <a class="navbar-brand navbar-dark" href="/relation/remode/">
+          <img src="{% static 'img/logo.png' %}" width="30" height="30">
+          <a href="/relation/remode/" class="navbar-brand" >ReMODE</a>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCol" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navCol">
+          <ul class="navbar-nav">
+            <li class="nav-item "><a href="/relation/remode/" class="nav-link" target="_blank">HOME</a></li>
+            <li class="nav-item"><a href="/relation/remode/subjob" class="nav-link" target="_blank">SUBMIT</a></li>
+            <li class="nav-item"><a href="/relation/remode/check" class="nav-link" target="_blank">CHECK</a></li>
+            <li class="nav-item"><a href="/relation/remode/result0" class="nav-link" target="_blank">RESULT</a></li>
+            <li class="nav-item active"><a href="/relation/remode/help" class="nav-link" target="_blank">HELP</a></li>
+            <li class="nav-item"><a href="/relation/remode/doc" class="nav-link" target="_blank">DOC</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+
+    <body id="idx-top">
+      <div class="container pt-3 pb-3">
+        <div class="card p-3" style="font-size:1.2em; margin-bottom: 25px;">
+          <div class="col-sm-12 pt-3 text-justify">
+            <h4 class="text-center mb-5"><b>ReMODE Help Document</b></h4>
+            <p>ReMODE is a <i>de novo</i> drug platform based on deep learning. Users can use this platform to generate novel protein kinases inhibitors. The help document is as below.</p>
+            <ol class="oA">				<li><b>Generation</b><ol class="oB">
+            <li><b>(a) Submit Job</b><br/>
+            <div class="fgt"><b>Job Submit Panel</b><br/>Click on the figure to get more details</div>
+            <div class="fg" style="background:url('{% static 'img/h1.png' %}') no-repeat;width:800px;height:644px;">
+              <a tabindex="0" role="button" data-toggle="popover" data-html="true" data-placement="left" title="Select Target" 
+              data-content="You can submit a target from this list." style="height:250px;"></a>
+              <a tabindex="1" role="button" data-toggle="popover" data-html="false" data-placement="right" title="Details" 
+              data-content="Please input the details of your job. A contact email address is need for the reminder of the job status. We also recommend you to give the job a description as its title." 
+              style="height:120px;"></a>
+              <a tabindex="2" role="button" data-toggle="popover" data-html="true" data-placement="left" title="Optimization" 
+              data-content="You can establish a customized generation task by the <b>Optimization</b> switch" style="height: 120px;"></a>
+              <a tabindex="3" role="button" data-toggle="popover" data-html="true" data-placement="right" title="Job Submit" 
+              data-content="This job ID can be used to check the task status in 'Check job' page." 
+              style="margin-top:2px;height:140px;"></a>  
+            </div>
+            <div class="sn sn-sm notice">
+              <div>
+                In <b>Physicochemical properties</b> panel, if the multiple properties are seleted for custom generation, the quality of generated molecules will be sharply declined.<br/>
+                When pharmacophore conditioning or bayesian sampling is enable, the task takes longer (≥8h) to run. <br/>
+                The molecular weight of the SMILES should be less than 500, and the maximum length of the SMILES string 140.<br/>
+
+                
+                
+              </div>
+            </div>
+            
+
+            <li><b>(b) Check Job</b><br/>
+            <div class="fgt"><b>Status Check Panel</b><br/>Click on the figure to get more details</div>
+            <div class="fg" style="background:url('{% static 'img/h2.png' %}') no-repeat;width:800px;height:495px;">
+              <a tabindex="5" role="button" data-toggle="popover" data-html="true" data-placement="left" title="Job ID Input" data-content="You can paste your job here and click the button to get the current status of the specified job.<br/>Please notice that the operation may take a few seconds." 
+              style="height:70px;"></a>
+              <a tabindex="6" role="button" data-toggle="popover" data-html="false" data-placement="right" title="Job Status" data-content="The status of the job is shown here." 
+              style="height:330px;margin-top:3px;"></a>
+            </div>
+          
+            <div class="sn sn-sm warning"><div>For now, we allow up to <b>2</b> running jobs per user.<br/>The results for the jobs will be remained on the server for at most <b>30</b> days.</div></div></li>
+            <li><b>(c) Get Results</b><br/>
+            <div class="fgt"><b>Result Display Page</b><br/>Click on the figure to get more details</div>
+            <div class="fg" style="background:url('{% static 'img/h3.png' %}') no-repeat;width:800px;height:700px;">
+              <a tabindex="0" role="button" data-toggle="popover" data-html="true" data-placement="left" title="Job ID & Target" 
+              data-content="You can download the generated SMILES strings." style="height:60px;"></a>
+              <a tabindex="1" role="button" data-toggle="popover" data-html="false" data-placement="right" title="Task details & Analysis" 
+              data-content="The form show the details the quality of the generated compounds." style="height:180px;"></a>
+              <a tabindex="2" role="button" data-toggle="popover" data-html="true" data-placement="left" title="Properties distribution" 
+              data-content="The properties(MW, LogP, QED, SA, Vina docking scores, and pharmacophore score) of the generated compounds." style="height: 450px;"></a>
+              
+            </div>
+
+            <div class="sn sn-sm notice">
+              <div>
+                You can get the result using the job id. 
+
+                
+                
+              </div>
+            </div>
+
+
+
+
+            
+          
+          
+          
+          </li>
+          
+          
+          </ol>
+
+
+
+
+            <li><b>DOWNLOAD</b>
+
+
+
+            <p>The  user can download all of the generated molecules (SMILES string) via the "DOWNLOAD" page.</p></li>
+          </ol></div>
+        </div>
+      </div>
+
+      <script>$(document).ready(()=>{$('[data-toggle="popover"]').popover();})</script>
+
+    </body>
+
+
+
+
+
+    <footer class="site-footer">
+      <div class="container" id="footer-container">
+          <div class="row">
+              <div class="col-sm-12 col-md-6 d-flex flex-column">
+                  <h6>About</h6>
+                  <p class="text-justify">
+                    ReMODE is a new web server based on DL algorithm for target-specific ligand design, 
+                    which integrates different functional modules to enable users to develop customizable drug design tasks. 
+                      <br>
+                      The server is described in detail here: <span style="color: #D8DBE2;">ReMODE: a deep learning-based web server for target-specific drug design.</span>
+                      <a href="" style="color: #D8DBE2;"></a>
+                  </p>
+              </div>
+    
+              <div class="col-xs-6 col-md-3 d-flex flex-column">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+                    
+                    <li><a href="mailto:liguobo@scu.edu.cn">Contact Us</a></li>
+                    <li><a href="http://cadd.zju.edu.cn/" target="_blank">Tingjun Hou's Group </a></li>
+                </ul>
+                
+              <script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5pbsm54xqiy&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+            </br>
+          </br>
+            </div>
+              <div class="col-xs-6 col-md-3 d-flex flex-column">
+                  <h6>Dev Tool</h6>
+                  <table class="xtable xnobor-all">
+                      <tbody><tr>
+                          <td>
+                              <a href="https://www.python.org/" target="_blank">
+                                  <img src="{% static 'img/python.png' %}" alt="">
+                              </a>
+                          </td>
+                          <td>
+                              <a href="https://www.rdkit.org/" target="_blank">
+                                  <img src="{% static 'img/rdkit.png' %}"alt="">
+                              </a>
+                          </td>
+                          <td>
+                              <a href="https://www.djangoproject.com/" target="_blank">
+                                  <img src="{% static 'img/django.png' %}" alt="">
+                              </a>
+                          </td>
+                          <td>
+                              <a href="https://pytorch.org/" target="_blank">
+                                  <img src="{% static 'img/pytorch.png' %}" alt="">
+                              </a>
+                          </td>
+                      </tr>
+                  </tbody></table>
+                  <div class="mt-auto text-right">
+                      <p class="copyright-text">E-mail: <font color="white">tingjunhou@zju.edu.cn</font></p>
+                      <p class="copyright-text">Phone: <font color="white">+86-571-88208412</font></p>   
+                  </div>
+              </div>
+          </div>
+             
+      </div>
+      <div class="container" id="footer-container">
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="text-right">
+                      <p class="copyright-text">Copyright © 2022 All Rights Reserved by
+                          <a href="http://cadd.zju.edu.cn/" style="color: #ffffff;">ZJU</a> and <a href="http://www.lilab-ecust.cn" style="color: #ffffff;">ECUST</a>
+                      </p>
+    
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+    </footer>
+    
+   
+   
+
+
+
+   
+   </body>
+   </html>

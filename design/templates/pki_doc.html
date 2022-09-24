@@ -1,0 +1,363 @@
+
+
+<html>
+
+    <head>
+        <head>
+            <meta charset="utf-8"> 
+            <title>ReMODE</title>
+              <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            {% load static %}
+            <script type="text/javascript" src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+            <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+            <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+            <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+            <script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
+            <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-select.min.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/relation.css' %}">
+            <script type="text/javascript" src="{% static 'js/subjob_1.js' %}" ></script>	
+            <script type="text/javascript" language="javascript" src="{% static 'js/jsme/jsme.nocache.js' %}"></script>
+            <link rel="stylesheet" type="text/css" href="{% static 'uis/jquery-ui-1.11.4.css' %}">
+            <script type="text/javascript" src="{% static 'js/bootstrapSwitch.js' %}"></script>
+            <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrapSwitch.css' %}">
+           <link rel="stylesheet" type="text/css" href="{% static 'css/fa/css/font-awesome.min.css' %}">
+           <script type="text/javascript" language="javascript" src="{% static 'js/ec/echarts.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+       
+       
+   </head>
+   
+   <body>
+       
+	<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark" style="background-color: #333537;">
+		<div class="container">
+			<a class="navbar-brand navbar-dark" href="/relation/remode/">
+        <img src="{% static 'img/logo.png' %}" width="30" height="30">
+        <a href="/relation/remode/" class="navbar-brand" >ReMODE</a>
+      </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCol" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navCol">
+				<ul class="navbar-nav">
+					<li class="nav-item "><a href="/relation/remode/" class="nav-link" target="_blank">HOME</a></li>
+					<li class="nav-item "><a href="/relation/remode/subjob" class="nav-link" target="_blank">SUBMIT</a></li>
+					<li class="nav-item"><a href="/relation/remode/check" class="nav-link" target="_blank">CHECK</a></li>
+					<li class="nav-item"><a href="/relation/remode/result0" class="nav-link" target="_blank">RESULT</a></li>
+					<li class="nav-item"><a href="/relation/remode/help" class="nav-link" target="_blank">HELP</a></li>
+					<li class="nav-item active"><a href="/relation/remode/doc" class="nav-link" target="_blank">DOC</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+<body id="doc">
+<section id="sec-intro" >
+    <div class="container">
+      <div class="col-sm-12">
+        <h2 class="section-heading"><b><i class="fa fa-database fa-fw"></i>Protein Kinases</b></h2>
+        <hr>
+      </div>
+    </div>
+<div class="container card">
+    <div class="card-header"><b>Statistics of Protein Kinases</b></div>
+    <div class="card-body"> 
+    <div id="main"></div>
+    <div id="main_2" ></div>
+    <script type="text/javascript">
+    
+        var myChart = echarts.init(document.getElementById('main'));
+    
+    
+        var option = {
+        tooltip: {
+        trigger: 'axis',
+        axisPointer: {            
+            type: 'shadow'        
+        }
+    },
+    xAxis: {
+        type:'category',
+        axisLabel:{'interval':0},
+        data: [ "\nAKT","ABL1","\nALK","AURKA","\nBRAF","BTK",
+                "\nCDK2","CHEK1","\nCK2","EGFR","\nEPHA2",
+                "FGFR1","\nGSK3b","IRAK4","\nJAK1","JAK2",
+                "\nKDR","MAP2K1","\nMAPK1","MAPK14","\nMET",
+                "PI3Kg","\nSYK",],
+                
+          
+    axisTick: {
+                alignWithLabel: true
+                }},
+    yAxis: {},
+    series: [{
+            name: 'num of proteins',
+            type: 'bar',
+            data: [51, 43, 47, 105, 65, 74,
+                   172, 130, 124, 131, 45,
+                   40, 61, 51, 39, 98, 
+                   62, 49, 113, 189, 77, 
+                   103, 59],
+    
+            itemStyle: {   
+                normal:{  
+                    color: function (params){
+                        var colorList = ['rgb(164,205,238)','rgb(42,170,227)','rgb(25,46,94)','rgb(195,229,235)','rgb(42,170,227)',
+                                         'rgb(164,205,238)','rgb(42,170,227)','rgb(25,46,94)','rgb(195,229,235)','rgb(42,170,227)',
+                                         'rgb(164,205,238)','rgb(42,170,227)','rgb(25,46,94)','rgb(195,229,235)','rgb(42,170,227)',
+                                         'rgb(164,205,238)','rgb(42,170,227)','rgb(25,46,94)','rgb(195,229,235)','rgb(42,170,227)',
+                                         'rgb(164,205,238)','rgb(42,170,227)','rgb(25,46,94)'];
+                        return colorList[params.dataIndex];
+                    }
+                },
+                emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+        }],
+    
+      
+    }; 
+    
+
+        myChart.setOption(option);
+    </script>
+    <script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main_2'));
+    var option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    
+    series: [
+        {
+            name: 'Category',
+            type: 'pie',
+            selectedMode: 'single',
+            radius: [0, '30%'],
+    
+            label: {
+                position: 'inner'
+            },
+            labelLine: {
+                show: false
+            },
+            data: [
+                {value: 2, name: 'TKL', selected: true},
+                {value: 13, name: 'TK'},
+                {value: 1, name: 'STE'},
+                {value: 1, name: 'Others'},
+                {value: 4, name: 'CMGC'},
+                {value: 1, name: 'CAMK'},
+                {value: 1, name: 'AGC'},
+                
+            ]
+        },
+        {
+            name: 'Protein Kinase name',
+            type: 'pie',
+            radius: ['40%', '55%'],
+            data: [
+                {value: 1, name: 'BRAF',itemStyle: { color: '#4169E1' }},
+                {value: 1, name: 'IRAK4',itemStyle: { color: '#6495ED' }},
+    
+                {value: 1, name: 'ABL1',itemStyle: { color: '#006400' }},
+                {value: 1, name: 'ALK',itemStyle: { color: '#008000' }},
+                {value: 1, name: 'AKT1',itemStyle: { color: '#7FFF00' }},
+                {value: 1, name: 'BTK',itemStyle: { color: '#228B22' }},
+                {value: 1, name: 'EGFR',itemStyle: { color: '#00FF00' }},
+                {value: 1, name: 'EPHA2',itemStyle: { color: '#32CD32' }},
+                {value: 1, name: 'FGFR1',itemStyle: { color: '#7FFF00' }},
+                {value: 1, name: 'JAK1',itemStyle: { color: '#7CFC00' }},
+                {value: 1, name: 'JAK2',itemStyle: { color: '#7FFFAA' }},
+                {value: 1, name: 'KDR',itemStyle: { color: '#00FA9A' }},
+                {value: 1, name: 'MAPK14',itemStyle: { color: '#2E8B57' }},
+                {value: 1, name: 'MET',itemStyle: { color: '#3CB371' }},
+                
+                {value: 1, name: 'SYK',itemStyle: { color: '#90EE90' }},
+    
+                {value: 1, name: 'MAP2K1',itemStyle: { color: '#F0E68C' }},
+    
+                {value: 1, name: 'AURKA',itemStyle: { color: '#FA8072' }},
+    
+                {value: 1, name: 'CDK2',itemStyle: { color: '#4682B4' }},
+                {value: 1, name: 'CK2',itemStyle: { color: '#87CEFA' }},
+                {value: 1, name: 'GSK3b',itemStyle: { color: '#87CEEB' }},
+                {value: 1, name: 'MAPK1',itemStyle: { color: '#00BFFF' }},
+                {value: 1, name: 'CHEK1',itemStyle: { color: '#008000' }},
+                {value: 1, name: 'PI3Kg',itemStyle: { color: '#00FF00' }},
+    
+            ]
+        }
+    ]
+    };
+    myChart.setOption(option);
+    </script>
+    </div>
+</div>
+
+
+  </section>
+  <section id="database">
+    <div class="container">
+      <div class="col-sm-12"><div class="row align-items-center">
+        <div class="col-sm-10">
+          <h2 class="section-heading"><b><i class="fa fa-folder-open fa-fw"></i>Data sets </b></h2>
+        </div>
+
+      </div><hr></div>
+    </div>
+
+    <div class="container card">
+    <div class="card-header"><b>Proteins and Protein Kinases inhibitors</b></div>
+    <div class="card-body">
+        <table class="container table tpks">
+            <thead>
+                <tr>
+                    <th>Protein Kinase</th>
+                    <th>Classfication</th>
+                    <th>Num_PDB</th>
+                    <th>PDB Files</th>
+                    <th class="tooltip-test" data-toggle="tooltip" title="Compounds collected from Chembl and BindindDB are included ">Num_SMILES</th>
+                    <th>PKI SMILES</th>
+        
+                    
+                </tr>
+            </thead>
+            <script>
+                $(function () { $("[data-toggle='tooltip']").tooltip(); });
+              </script>
+            <tbody>
+                
+
+                <tr><td>ABL1</td><td>TK</td><td>43</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/ABL1/">Download</a></td><td>1331</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/ABL1_lig/">Download</a></td></tr>
+                <tr><td>ALK1</td><td>TK</td><td>47</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/ALK/">Download</a></td><td>1502</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/ALK_lig/">Download</a></td></tr>
+                <tr><td>AKT1</td><td>TK</td><td>51</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/AKT1/">Download</a></td><td>407</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/AKT1_lig/">Download</a></td></tr>
+                <tr><td>AURKA</td><td>Others</td><td>105</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/AURKA/">Download</a></td><td>1189</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/AURKA_lig/">Download</a></td></tr>
+                <tr><td>BRAF</td><td>TKL</td><td>65</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/BRAF/">Download</a></a></td><td>1143</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/BRAF_lig/">Download</a></td></tr>
+                <tr><td>BTK</td><td>TK</td><td>74</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/BTK/">Download</a></td><td>5537</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/BTK_lig/">Download</a></td></tr>  
+                <tr><td>CDK2</td><td>TK</td><td>172</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/CDK2/">Download</a></td><td>1179</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/CDK2_lig/">Download</a></td></tr>
+                <tr><td>CHEK1</td><td>TK</td><td>130</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/CHEK1/">Download</a></td><td>1065</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/CHEK1_lig/">Download</a></td></tr>
+                <tr><td>CK2</td><td>CMGG</td><td>124</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/CK2a/">Download</a></td><td>596</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/CK2a_lig/">Download</a></td></tr>
+                <tr><td>C-MET</td><td>TK</td><td>77</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/HGF/">Download</a></td><td>2373</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/HGF_lig/">Download</a></td></tr>
+                <tr><td>EGFR</td><td>TK</td><td>131</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/EGFR/">Download</a></td><td>4068</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/EGFR_lig/">Download</a></td></tr>
+                <tr><td>EPHA2</td><td>TK</td><td>45</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/EPHA2/">Download</a></td><td>533</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/EPHA2_lig/">Download</a></td></tr>
+                <tr><td>FGFR1</td><td>TK</td><td>40</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/FGFR1/">Download</a></td><td>1740</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/FGFR_lig/">Download</a></td></tr>
+                <tr><td>GSK3b</td><td>CMGG</td><td>61</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/GSK3b/">Download</a></td><td>837</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/GSK3b_lig/">Download</a></td></tr>
+                <tr><td>IRAK4</td><td>TKL</td><td>51</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/IRAK4/">Download</a></td><td>2265</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/IRAK4_lig/">Download</a></td></tr>                
+                <tr><td>JAK1</td><td>TK</td><td>39</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/JAK1/">Download</a></td><td>3567</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/JAK1_lig/">Download</a></td></tr>
+                <tr><td>JAK2</td><td>TK</td><td>98</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/JAK2/">Download</a></td><td>3199</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/JAK2_lig/">Download</a></td></tr>
+                <tr><td>KDR</td><td>TK</td><td>62</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/KDR/">Download</a></td><td>3427</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/KDR_lig/">Download</a></td></tr>
+                <tr><td>MAP2K1</td><td>STE</td><td>49</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/MAP2K1/">Download</a></td><td>736</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/MAP2K1_lig/">Download</a></td></tr>
+                <tr><td>MAPK1</td><td>CMGG</td><td>113</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/MAPK1/">Download</a></td><td>3002</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/MAPK1_lig/">Download</a></td></tr>
+                <tr><td>MAPK14</td><td>TK</td><td>189</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/MAPK14/">Download</a></td><td>2559</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/MAPK14_lig/">Download</a></td></tr>
+                <tr><td>PI3Kg</td><td>AGC</td><td>103</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/PIK3CG/">Download</a></td><td>650</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/PIK3CG_lig/">Download</a></td></tr>
+                <tr><td>SYK</td><td>TK</td><td>59</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/SYK/">Download</a></td><td>642</td><td><a href="http://cadd.zju.edu.cn/relation/remode/dldoc/SYK_lig/">Download</a></td></tr>
+                
+
+            </tbody>
+        </table>
+
+
+    </div>
+    </div>
+  </section>
+
+
+</body>
+
+
+
+
+
+<footer class="site-footer">
+    <div class="container" id="footer-container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 d-flex flex-column">
+                <h6>About</h6>
+                <p class="text-justify">
+                  ReMODE is a new web server based on DL algorithm for target-specific ligand design, 
+                  which integrates different functional modules to enable users to develop customizable drug design tasks. 
+                    <br>
+                    The server is described in detail here: <span style="color: #D8DBE2;">ReMODE: a deep learning-based web server for target-specific drug design.</span>
+                    <a href="" style="color: #D8DBE2;"></a>
+                </p>
+            </div>
+  
+            <div class="col-xs-6 col-md-3 d-flex flex-column">
+              <h6>Quick Links</h6>
+              <ul class="footer-links">
+                  
+                  <li><a href="mailto:liguobo@scu.edu.cn">Contact Us</a></li>
+                  <li><a href="http://cadd.zju.edu.cn/" target="_blank">Tingjun Hou's Group </a></li>
+              </ul>
+              
+            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5pbsm54xqiy&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+          </br>
+        </br>
+          </div>
+            <div class="col-xs-6 col-md-3 d-flex flex-column">
+                <h6>Dev Tool</h6>
+                <table class="xtable xnobor-all">
+                    <tbody><tr>
+                        <td>
+                            <a href="https://www.python.org/" target="_blank">
+                                <img src="{% static 'img/python.png' %}" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://www.rdkit.org/" target="_blank">
+                                <img src="{% static 'img/rdkit.png' %}"alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://www.djangoproject.com/" target="_blank">
+                                <img src="{% static 'img/django.png' %}" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://pytorch.org/" target="_blank">
+                                <img src="{% static 'img/pytorch.png' %}" alt="">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div class="mt-auto text-right">
+                    <p class="copyright-text">E-mail: <font color="white">tingjunhou@zju.edu.cn</font></p>
+                    <p class="copyright-text">Phone: <font color="white">+86-571-88208412</font></p>   
+                </div>
+            </div>
+        </div>
+           
+    </div>
+    <div class="container" id="footer-container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="text-right">
+                    <p class="copyright-text">Copyright © 2022 All Rights Reserved by
+                        <a href="http://cadd.zju.edu.cn/" style="color: #ffffff;">ZJU</a> and <a href="http://www.lilab-ecust.cn" style="color: #ffffff;">ECUST</a>
+                    </p>
+  
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
+  
+   
+
+
+
+   
+   </body>
+   </html>

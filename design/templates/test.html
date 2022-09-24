@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>ReMODE</title>
+  	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-select.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/relation.css' %}">
+	<script type="text/javascript" src="{% static 'js/subjob_1.js' %}" ></script>	
+	<script type="text/javascript" language="javascript" src="{% static 'js/jsme/jsme.nocache.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'uis/jquery-ui-1.11.4.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrapSwitch.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrapSwitch.css' %}">
+	<script>
+		$(function () { $("[data-toggle='tooltip']").tooltip();});
+	</script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<style>
+
+
+
+</style>
+<body>	
+	<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark" style="background-color: #333537;">
+		<div class="container">
+			<a class="navbar-brand navbar-dark" href="/relation/remode/">
+        <img src="{% static 'img/logo.png' %}" width="30" height="30">
+        <a href="/relation/remode/" class="navbar-brand" >ReMODE</a>
+      </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCol" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navCol">
+				<ul class="navbar-nav">
+					<li class="nav-item "><a href="/relation/remode/" class="nav-link" target="_blank">HOME</a></li>
+					<li class="nav-item active"><a href="/relation/remode/subjob" class="nav-link" target="_blank">SUBMIT</a></li>
+					<li class="nav-item"><a href="/relation/remode/check" class="nav-link" target="_blank">CHECK</a></li>
+					<li class="nav-item"><a href="/relation/remode/result0" class="nav-link" target="_blank">RESULT</a></li>
+					<li class="nav-item"><a href="/relation/remode/help" class="nav-link" target="_blank">HELP</a></li>
+					<li class="nav-item"><a href="/relation/remode/doc" class="nav-link" target="_blank">DOC</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<section class="mbo">
+	<div class="container"  >
+		<form name="input_data" id="SA2" >
+			{% csrf_token %}
+			<div class="col-md-10" style="margin: auto;width: 90%;padding: 50px 50px 30px;">
+				<select id="i1" class="was-validated need-validation selectpicker show-tick form-control" data-live-search="true" data-size="5"  title="Please select a target..." required="required" 
+				style=" border: 2px solid rgb(134, 133, 133);border-radius: 4px;">
+					<option value="abl1">ABL1 (Tyrosine-protein kinase Abelson 1)</option>
+					<option value="akt1">AKT1 (Protein kinase B alpha)</option>
+					<option value="alk">ALK (Anaplastic lymphoma kinase)</option>
+					<option value="aurka">AURKA (Aurora kinase A)</option>
+					<option value="braf">BRAF (Serine/threonine-protein kinase B-raf)</option>
+					<option value="btk">BTK (Brutons tyrosine kinase)</option>
+					<option value="cdk2">CDK2 (Cyclin-dependent Kinases 2)</option>
+					<option value="chek1">CHEK1 (Checkpoint kinase 1) </option>
+					<option value="ck2a">CK2 (Casein kinase II subunit alpha)</option>
+					<option value="cmet">c-Met (Hepatocyte growth factor receptor)</option>
+					<option value="egfr">EGFR (Epidermal growth factor receptor)</option>
+					<option value="epha2">Epha2 (Erythropoitinproduceing hepato-cellular a2)</option>
+					<option value="fgfr1">FGFR1 (Fibroblast growth factor receptor 1)</option>
+					<option value="gsk3b">GSK3b (Glycogen synthase kinase-3 beta)</option>
+					<option value="irak4">IRAK4 (Interleukin-1 receptor-associated kinase 4)</option>
+					<option value="jak1">JAK1 (Tyrosine-protein kinase Janus kinase 1)</option>
+					<option value="jak2">JAK2 (Tyrosine-protein kinase Janus kinase 2)</option>
+					<option value="kdr">VEGFR2 (Vascular endothelial growth factor receptor 2)</option>
+					<option value="mek1">MAP2K1 (MEK, Mitogen-activated protein kinase kinase 1)</option>
+					<option data-tokens="MAPK1 mitogen-activated protein kinase " value="erk2">MAPK1 (ERK2,Mitogen-activated protein kinase 1)</option>
+					<option data-tokens="MAPK14 mitogen-activated protein kinase " value="p38">MAPK14 (p38,Mitogen-activated protein kinase 14)</option>
+					<option value="pik3cg">PI3KG (Phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit, gamma isoform)</option>
+					<option value="syk">SYK (Tyrosine-protein kinase Spleen tyrosine kinase)</option>
+				</select>
+			</div>
+			<table class="table table-borderless" style="margin-bottom:0 ;">
+				<thead>
+					<tr>
+						<th><label class = "cig">Generation numbers:</label></th>
+						<th><input id="i2" class="form-control col-md-10" type="number" name="gen_num" placeholder='e.g.1000' required="required" min=100 max=10000></th>
+						<th><label class = "cig">Your job name: </label></th>
+						<th><input id="i3" class="form-control col-md-10" type="text" name="job_name" placeholder='job_name' required="required"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><label class = "cig">Email:</label></td>
+						<td><input type="email" class="form-control col-md-10"  id="emai" placeholder="123@example.com" required="required"></td>
+						<td>				<div class="custom-control custom-switch" >
+							<input type="checkbox" class="custom-control-input" id="a0" value="0"  onclick="this.value=(this.value==0)?1:0"/>
+							<label class="custom-control-label cig"  for="a0">Optimization</label>
+						</div></td>
+						<td>
+							<div class="col-md-6">
+								<input id="sub" class="btn btn-primary btn-lg btn-block" style="position:relative;bottom:5px;" type="submit" value="Submit" >
+							</div></td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="visibility: hidden" id="advo">
+				<table class="table table-borderless " >			
+					<thead>
+						<tr>
+							<th>
+								<label class="radio-inline cig" data-toggle="tooltip" data-placement="bottom" title="Directly generate
+								molecules with customized physicochemical properties">
+								<input type="radio" name="inlineRadioOptions" id="optpro" value="prop">Physicochemical properties</label></th>
+							<th>	
+								<label class="radio-inline cig" data-toggle="tooltip" data-placement="bottom" title="Generate molecules with pharmacophore conditioning">
+								<input type="radio" name="inlineRadioOptions" id="optpha" value="pha">Pharmacophore features</label></th>	
+							<th>
+								<label class="radio-inline cig" data-toggle="tooltip" data-placement="bottom" title="Sample molecules from latent space with Bayesian Optimization, and the Autodock Vina
+								  scores is set as the black box function">
+								<input type="radio" name="inlineRadioOptions" id="optbo" value="bo">Bayesian sampling</label></th>
+							<th>
+								<label class="radio-inline cig" data-toggle="tooltip" data-placement="bottom" title="Generate molecules with given scaffold/fragment/structure" >
+								<input type="radio" name="inlineRadioOptions" id="optsmi" value="str">Structure features</label></th>		
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			
+			
+			<div class="alert alert-dark" style="visibility: hidden; position: absolute; z-index: 2;" id="smipro" >
+			<div class="row" >		
+
+			
+					<div class="col-md-6"> 						
+						<label class="tooltip-test cig control-label" data-toggle="tooltip" title="Molecular Weight ">MW:</label>	
+						<input id="i4" class="col-md-3 adi" type="number" value="250" onchange="checkmw()" min="100" max="800"  required="required">
+						<label class = "cig control-label"  style="font-size:20px;font-weight:bold;color:rgb(255,255,255);"> ~ </label>
+						<input id="i5" class="col-md-3 adi" type="number" value="750" onchange="checkmw()" min="100" max="800"  required="required">
+					</div>
+
+					<div class="col-md-6">					
+						<label class="tooltip-test cig control-label" data-toggle="tooltip" title="Oil-water Partition Coefficient ">LogP:</label>
+						<input id="i6" class="col-md-3 adi" type="number" value="-2" onchange="checklp()" min="-2" max="8"  required="required">						
+						<label class = "cig control-label" style="font-size:20px;font-weight:bold;color:rgb(255,255,255);"> ~ </label>
+						<input id="i7" class="col-md-3 adi" type="number" value="8" onchange="checklp()" min="-2" max="8"  required="required">
+					</div>
+
+					<div class="col-md-6">
+						<label class="tooltip-test cig" data-toggle="tooltip" title="Quantitative Estimate of Drug-likeness">QED:</label>
+						<div class="switch switch-small" style="position:relative;top:5px;" data-on="success" data-off="info" data-on-label="ON" data-off-label="OFF" id="qopt">
+						<input type="checkbox" id="i9" value="0"/>
+						</div>
+						</div>
+					<div class="col-md-6">
+						<label class="tooltip-test cig" data-toggle="tooltip" title="Synthetics Accessibility">SAS:</label>
+						<div class="switch switch-small" style="position:relative;top:5px;" data-on="success" data-off="info" data-on-label="ON" data-off-label="OFF" id="sopt">
+						<input type="checkbox" id="i10" value="0"/> 
+						</div>
+					</div>			
+			</div>
+			</div>
+			<div class="alert alert-dark" style="visibility: hidden; margin:0 auto; position: absolute; right:10%; z-index: 1; "  id="smistr" >
+					<div class=".col-md-4 .offset-md-4"><label class="cig" >SMILES:</label>
+						<input type="text" style="height:40px" maxlength="110" class="col-md-4 adi" id="i8">
+						<button class="btn btn-primary" style="position:relative;right:5px;bottom:3px;" data-toggle="modal" data-target="#Draw" type="button">Draw</button>
+					</div>
+			</div>
+	
+
+
+
+
+		</form>
+	</div>	
+	<div class=container style="text-align:-webkit-center;" >
+		<div class="alert alert-primary" role="alert" id="pres" style="display:none;width:600px">
+					<h4 class="alert-heading">Submit complete !</h4>
+					<p>Your job has been submitted. Please wait while we are processing the tasks.</p>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Your&nbsp;<strong>JOB ID</strong>&nbsp;is&nbsp;:&nbsp;</span>
+						</div>
+						<input type="text" class="form-control" readonly="" value="" id="mid">
+						<div class="input-group-append">
+							<button class="btn btn-default" type="button" id="cp">COPY</button></div>
+					</div>
+					<p class="mb-0">If you can't receive our email, please try to add our email address to the whitelist.</p>
+		</div>		
+		<div class="alert alert-danger" role="alert" id="pres1" style="display:none;width:600px">
+			<h4 class="alert-heading">Submit ERROR !</h4>
+			<p>Please input the correct SMILES strings and ensure the Molecular Weight of strings is between 150 and 600!</p>
+			<div class="input-group">
+				<div class="input-group-prepend">
+				<input type="text" class="form-control" readonly="" value="" id="mid1"></div>
+			</div>	
+		</div>
+	</div>
+</section>
+
+<div class="modal fade " id="Draw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">DRAW STRUCTURE</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+				<div code="JME.class" name="JME" archive="JME.jar" width="400" height="400" id="JME">
+					You have to enable JavaScript in your browser to use JSME! </div>
+				<form method="POST" name="getsmi" onsubmit="return false;" style="padding-top: 1em ;">
+					<div class="row container">
+					<input type="text" class="form-control col-md-6" name="smi" id="dsmi" value="" readonly="" size="100" >
+					<input type="button" class="form-control col-md-3" value="Get SMILES" onClick="getSmiles()">
+					<input type="button" class="form-control col-md-3" value="Copy SMILES" id="cpsmi" onClick="cps()">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer"></div>
+	</div>
+</div>
+</div>
+
+<div class="container prot">
+	<strong>Notes</strong> - About the ReMODE:
+	<ul>
+	<li>Please <strong>DO NOT</strong> submit task repeatedly !</li>
+	<li>The customized molecules will be generated by turning on Optimization switch.</li>
+	<li>When the Bayesian or pharmacophore optimization is enabled, the binding affinity of the generated molecules will decrease,
+		 while the run time of task will increase (≥8h).</li>
+	<li>In structure optimization, you can fill the blank with the valid SMILES format <strong> (150≤ MW ≤ 500 and MAX strings length=140),</strong>and
+		the server will conduct fragment-based durg design based on the SMILES strings you provide.</li>
+	<li>The Pharmacophore models used in pharmacophore optimization are from <a href="http://www.inteligand.com/pharmdb/" target="_blank">LigandScout Pharmacophore Database</a> 
+	</li>
+
+	</ul>
+</div>
+
+<footer class="site-footer">
+	<div class="container" id="footer-container">
+		<div class="row">
+			<div class="col-sm-12 col-md-6 d-flex flex-column">
+				<h6>About</h6>
+				<p class="text-justify">
+				  ReMODE is a new web server based on DL algorithm for target-specific ligand design, 
+				  which integrates different functional modules to enable users to develop customizable drug design tasks. 
+					<br>
+					The server is described in detail here: <span style="color: #D8DBE2;">ReMODE: a deep learning-based web server for target-specific drug design.</span>
+					<a href="" style="color: #D8DBE2;"></a>
+				</p>
+			</div>
+  
+			<div class="col-xs-6 col-md-3 d-flex flex-column">
+			  <h6>Quick Links</h6>
+			  <ul class="footer-links">
+				  
+				  <li><a href="mailto:liguobo@scu.edu.cn">Contact Us</a></li>
+				  <li><a href="http://cadd.zju.edu.cn/" target="_blank">Tingjun Hou's Group </a></li>
+			  </ul>
+			  
+			<script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5pbsm54xqiy&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+		  </br>
+		</br>
+		  </div>
+			<div class="col-xs-6 col-md-3 d-flex flex-column">
+				<h6>Dev Tool</h6>
+				<table class="xtable xnobor-all">
+					<tbody><tr>
+						<td>
+							<a href="https://www.python.org/" target="_blank">
+								<img src="{% static 'img/python.png' %}" alt="">
+							</a>
+						</td>
+						<td>
+							<a href="https://www.rdkit.org/" target="_blank">
+								<img src="{% static 'img/rdkit.png' %}"alt="">
+							</a>
+						</td>
+						<td>
+							<a href="https://www.djangoproject.com/" target="_blank">
+								<img src="{% static 'img/django.png' %}" alt="">
+							</a>
+						</td>
+						<td>
+							<a href="https://pytorch.org/" target="_blank">
+								<img src="{% static 'img/pytorch.png' %}" alt="">
+							</a>
+						</td>
+					</tr>
+				</tbody></table>
+				<div class="mt-auto text-right">
+					<p class="copyright-text">E-mail: <font color="white">tingjunhou@zju.edu.cn</font></p>
+					<p class="copyright-text">Phone: <font color="white">+86-571-88208412</font></p>   
+				</div>
+			</div>
+		</div>
+		   
+	</div>
+	<div class="container" id="footer-container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="text-right">
+					<p class="copyright-text">Copyright © 2022 All Rights Reserved by
+						<a href="http://cadd.zju.edu.cn/" style="color: #ffffff;">ZJU</a> and <a href="http://www.lilab-ecust.cn" style="color: #ffffff;">ECUST</a>
+					</p>
+  
+				   
+				</div>
+			</div>
+		</div>
+	</div>
+  </footer>
+  
+</body>
+
+<script>
+	function checkmw(){
+		if(parseInt($("#i4").val()) - parseInt($("#i5").val())>-100){
+			alert('The MW of the left input box must be smaller than the right input box, and the range of MW values should be greater than 100 !');
+			$('#i4').val('250');
+			$('#i5').val('750');
+		}
+	}
+	function checklp(){
+		if(parseInt($("#i6").val()) - parseInt($("#i7").val())>-3){
+			alert('The LogP of the left input box must be smaller than the right input box, and the range of LogP values should be greater than 3 !');
+			$('#i6').val('2');
+			$('#i7').val('8');
+		}
+	}
+
+	function getSmiles() {
+		var drawing = document.JME.smiles();
+		document.getsmi.smi.value = drawing;
+	}
+	function cps(){
+		var e = document.getElementById("dsmi");
+		e.select();
+		document.execCommand("Copy");
+	}
+
+</script>
+
+</html>
+
